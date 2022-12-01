@@ -11,24 +11,38 @@
 <body>
     <header>
         <h1>Test your knowledge on the New York Yankees!</h1>
-            <p class ="score">View Highscore</p>
-            <p class ="timer">Timer:</p>
+        <p id="highscore" class="score">View Highscore</p>
+        <p id="timer-left" class="time">Timer:</p>
     </header>
-    <main>
+    <main id="trivia-section" class="hidden">
+        <div id="start-trivia">
+            <h2>Yankees Trivia</h2>
+            <button class="button" id="start">Start Quiz</button>
+        </div>
         <h3>YANKEES HISTORY QUIZ!</h3>
-        <ul id="choices" class ="button-grid">
-            <button class ="choice1"><li>placeholder</li></button>
-            <button class ="choice2"><li>placeholder</li></button>
-            <button class ="choice3"><li>placeholder</li></button>
-            <button class ="choice4"><li>placeholder</li></button>
-        </ul>
+        <h3 id="trivia-questions">Question</h3>
+        <section id="choices" class ="button-grid">
+            <button id="button1" class="button"><li>Choice 1</li></button>
+            <button id="button2" class="button"><li>Choice 2</li></button>
+            <button id="button3" class="button"><li>Choice 3</li></button>
+            <button id="button4" class="button"><li>Choice 4</li></button>
+        </section>
+        <article id="trivia-submit" class="hidden">
+            <h3>This is the end of the Trivia!</h3>
+            <p>Enter and submit your initials below.</p>
+            <textarea rows="1" cols="10" placeholder="Your Initials Here"
+                id="submit-initials">
+            </textarea>
+            <br>
+            <button id="submit-initials" class="submit">Submit Initials</button>
+        </article>
+        <section id="highscores" class="hidden">
+            <h3>Highscores</h3>
+            <div id="usersinitials"></div>
+            <div id="usersscores"></div>
+        </section>
     </main>
-    <article>
-        <button class ="start">Start Quiz</button>
-        <button class ="next">Next Question</button>
-        <button class ="submit">Submit Initials</button>
-    </article>
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/script.js"></script>
+<script src="./assets/js/questions.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
