@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Quiz</title>
+    <title>Yankees Speed Trivia</title>
     <link rel="stylesheet" href="./assets/css/reset.css" >
     <link rel="stylesheet" href="./assets/css/style.css" >
 </head>
 <body>
     <header>
         <h1>Test your knowledge on the New York Yankees!</h1>
-        <p id="highscore" class="score">View Highscore</p>
-        <p id="timer-left" class="time">Timer:</p>
+        <div id="highscore" class="score">Highscore</div>
+        <div id="timer-left" class="time">Timer: 0</div>
     </header>
-    <main id="trivia-section" class="hidden">
-        <div id="start-trivia">
+    <main id="trivia-section">
+        <div id="start-trivia" class="hidde">
             <h2>Yankees Trivia</h2>
-            <button class="button" id="start">Start Quiz</button>
+            <button class="button" id="start">Start Trivia</button>
         </div>
-        <h3>YANKEES HISTORY QUIZ!</h3>
+        <section class="hidden">
+        <h3>YANKEES HISTORY CHALLENGE!</h3>
         <h3 id="trivia-questions">Question</h3>
         <section id="choices" class ="button-grid">
             <button id="button1" class="button"><li>Choice 1</li></button>
@@ -27,17 +28,23 @@
             <button id="button3" class="button"><li>Choice 3</li></button>
             <button id="button4" class="button"><li>Choice 4</li></button>
         </section>
+        </section>
         <article id="trivia-submit" class="hidden">
             <h3>This is the end of the Trivia!</h3>
             <p>Enter and submit your initials below.</p>
-            <textarea rows="1" cols="10" placeholder="Your Initials Here"
-                id="submit-initials">
-            </textarea>
-            <br>
-            <button id="submit-initials" class="submit">Submit Initials</button>
-        </article>
-        <section id="highscores" class="hidden">
-            <h3>Highscores</h3>
+            <textarea rows="1" cols="5" placeholder="Your Initials Here"
+            id="submit-initials">
+        </textarea>
+        <br>
+        <section id="hidden">
+        <button id="submit-initials" class="button">Submit Initials</button>
+        </section>
+    </article>
+    <section class="hidden" id="return">
+        <p>Would you like to try again?</p>
+        <button class="button" id="retake">Retake Trivia</button>
+    </section>
+        <section id="userinput" class="hidden">
             <div id="usersinitials"></div>
             <div id="usersscores"></div>
         </section>

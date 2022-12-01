@@ -2,79 +2,113 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: rgb(2, 8, 61);
 }
 
-header{
-    background-color: white;
+body {
+    background-color: #9f9f9f;
+    font-family: 'Nunito', sans-serif;
+    width: 100vw;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+header {
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
+    flex-direction: row;
     padding: 20px;
+    background-color: #ffffff;
+    color: #040721;
 }
 
 .score{
     order: -1;
-    font-size: 28px;
+    color: #040721;
+    font-size: 32px;
 }
 
-.timer{
-    order: 1;
-    font-size: 28px;
+.time{
+    font-size: 32px;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: lightgray;
+p {
+    color: #ffffff;
+    margin-bottom: 5px;
 }
 
-h1{
-    font-size: 36px;
+#retake {
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#time-left {
+    margin: 10px;
+    padding: 10px;
+}
+
+#trivia-section {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    margin: 40px auto;
     text-align: center;
+    top: 100px;
+    box-shadow: 20px 20px 30px #ffffff;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #040721;
 }
 
-h3{
-    color: white;
-    text-align: center;
-    margin-bottom: 25px;
+#start-trivia {
+    margin: 0 0 25px 0;
 }
 
-main{
-    color: white;
-    background-color: rgb(2, 8, 61);
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 50px 250px 0 250px;
-    border-radius: 25px;
-    box-shadow: 10px 10px 5px rgba(2, 8, 61, 0.348);
+.button:hover {
+    background-color: #9f9f9f;
+    box-shadow: 3px 3px 10px #ffffff;
+    transition: 300ms ease;
+}
+
+.button {
+    background-color: #ffffff;
+    color: #040721; 
+    font-size: 18px;
+    border-radius: 20px;
+    border-color: #c7c7c7;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
 }
 
 .button-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 20px;
-    align-self: center;
-    margin: 10px;
+    gap: 10px;
 }
 
-article{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+.hidden {
+    display: none;
 }
 
-.start{
-    align-self: center;
-    margin: 5px;
-}
-
-.next{
-    align-self: center;
-    margin: 5px;
-}
-
-.submit{
-    align-self: center;
-    margin: 5px;
+textarea {
+    padding: 5px;
+    margin: 10px 0 10px 0;
+    font-size: 18px;
+    text-align: center;
+    resize: none;
 }
