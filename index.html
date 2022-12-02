@@ -11,15 +11,15 @@
 <body>
     <header>
         <h1>Test your knowledge on the New York Yankees!</h1>
-        <div id="highscore" class="score">Highscores</div>
+        <button id="highscore" class="score">Highscores</button>
         <div id="time-left" class="time">Timer: 0</div>
     </header>
     <main id="trivia-section">
-        <div id="start-trivia" class="hidde">
+        <div id="start-trivia" class="hidden">
             <h2>Yankees Trivia</h2>
             <button class="button" id="start">Start Trivia</button>
         </div>
-        <section id="question-container" class="hidden">
+        <section id="question-container" class="hidde">
             <h3 class="question-title">YANKEES HISTORY CHALLENGE!</h3>
             <h3 id="trivia-questions">Question</h3>
         <section id="choices" class ="button-grid">
@@ -32,10 +32,10 @@
         <article id="trivia-submit" class="hidden">
             <h3>This is the end of the Trivia!</h3>
             <p>Enter and submit your initials below.</p>
-            <textarea rows="1" cols="5" placeholder=""></textarea>
+            <textarea rows="1" cols="5" placeholder="Initials"></textarea>
             <br>
         <section id="initials-submit">
-            <button class="button">Submit Initials</button>
+            <button id="submit" class="button">Submit Initials</button>
         </section>
         </article>
         <section id="retake-trivia" class="hidden">
@@ -45,6 +45,7 @@
         <section id="userinput" class="hidden">
             <div id="usersinitials"></div>
             <div id="usersscores"></div>
+            <button class="button" id="return">Home</button>
         </section>
     </main>
     <script src="./assets/js/questions.js"></script>

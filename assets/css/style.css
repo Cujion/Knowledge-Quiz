@@ -36,10 +36,24 @@ header {
     color: #040721;
 }
 
-.score{
+#highscore{
     order: -1;
     color: #040721;
     font-size: 32px;
+    background-color: #ffffff;
+    color: #040721; 
+    font-size: 18px;
+    border-radius: 20px;
+    border-color: #c7c7c7;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px 15px;
+}
+
+#highscore:hover {
+    background-color: #9f9f9f;
+    box-shadow: 3px 3px 10px #040721;
+    transition: 300ms ease;
 }
 
 .time{
