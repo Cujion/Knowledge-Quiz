@@ -72,7 +72,6 @@ var questions = [
 document.addEventListener("click", function(event) {
     var element = event.target;
     if (element.matches("#choices button")) {
-        console.log("CLICK BUTTON");
         // MOVE CURSOR
         // CHECK FOR CORRECT ANSWER
         // IF WRONG, SUBTRACT TIME
@@ -84,34 +83,29 @@ startButton.addEventListener('click', function(event) {
     // SHOW TRIVIA QUESTIONS
     var element = event.target;
     if (element.matches("#start")) {
-        console.log("Start Game")
     }
 });
 
 submitbutton.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#submit")) {
-        console.log("Submit Initials")
     }
 });
 
 retakeTrivia.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#retake")) {
-        console.log("Retake Trivia")
     }
 });
 
 checkscore.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#highscore")) {
-        console.log("Check Highscore")
     }
 });
 
 home.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#return")) {
-        console.log("Home page")
     }
 });
