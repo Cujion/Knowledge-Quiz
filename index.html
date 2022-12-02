@@ -11,17 +11,17 @@
 <body>
     <header>
         <h1>Test your knowledge on the New York Yankees!</h1>
-        <div id="highscore" class="score">Highscore</div>
-        <div id="timer-left" class="time">Timer: 0</div>
+        <div id="highscore" class="score">Highscores</div>
+        <div id="time-left" class="time">Timer: 0</div>
     </header>
     <main id="trivia-section">
         <div id="start-trivia" class="hidde">
             <h2>Yankees Trivia</h2>
             <button class="button" id="start">Start Trivia</button>
         </div>
-        <section class="hidden">
-        <h3>YANKEES HISTORY CHALLENGE!</h3>
-        <h3 id="trivia-questions">Question</h3>
+        <section id="question-container" class="hidden">
+            <h3 class="question-title">YANKEES HISTORY CHALLENGE!</h3>
+            <h3 id="trivia-questions">Question</h3>
         <section id="choices" class ="button-grid">
             <button id="button1" class="button">Choice 1</button>
             <button id="button2" class="button">Choice 2</button>
@@ -32,24 +32,22 @@
         <article id="trivia-submit" class="hidden">
             <h3>This is the end of the Trivia!</h3>
             <p>Enter and submit your initials below.</p>
-            <textarea rows="1" cols="5" placeholder="Your Initials Here"
-            id="submit-initials">
-        </textarea>
-        <br>
-        <section id="hidden">
-        <button id="submit-initials" class="button">Submit Initials</button>
+            <textarea rows="1" cols="5" placeholder=""></textarea>
+            <br>
+        <section id="initials-submit">
+            <button class="button">Submit Initials</button>
         </section>
-    </article>
-    <section class="hidden" id="return">
-        <p>Would you like to try again?</p>
-        <button class="button" id="retake">Retake Trivia</button>
-    </section>
+        </article>
+        <section id="retake-trivia" class="hidden">
+            <p>Would you like to try again?</p>
+            <button class="button" id="retake">Retake Trivia</button>
+        </section>
         <section id="userinput" class="hidden">
             <div id="usersinitials"></div>
             <div id="usersscores"></div>
         </section>
     </main>
-<script src="./assets/js/questions.js"></script>
-<script src="./assets/js/script.js"></script>
+    <script src="./assets/js/questions.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

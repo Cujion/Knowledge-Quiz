@@ -32,6 +32,7 @@ header {
     flex-direction: row;
     padding: 20px;
     background-color: #ffffff;
+    border-radius: 25px;
     color: #040721;
 }
 
@@ -56,11 +57,6 @@ p {
     cursor: pointer;
 }
 
-#time-left {
-    margin: 10px;
-    padding: 10px;
-}
-
 #trivia-section {
     width: 100%;
     max-width: 700px;
@@ -70,6 +66,11 @@ p {
     box-shadow: 20px 20px 30px #ffffff;
     border-radius: 20px;
     background-color: #040721;
+}
+
+.question-title {
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
 }
 
 .button:hover {
