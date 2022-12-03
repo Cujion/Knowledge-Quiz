@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
 }
 
 body {
     background-color: #9f9f9f;
-    font-family: 'Nunito', sans-serif;
     width: 100vw;
 }
 
@@ -18,6 +18,7 @@ h2 {
     font-size: 32px;
     color: white;
     margin-bottom: 20px;
+    text-decoration: underline;
 }
 
 h3 {
@@ -114,6 +115,7 @@ p {
 #leadertitle {
     font-size: 32px;
     color: #ffffff;
+    text-decoration: underline;
 }
 
 .hidden {
@@ -126,4 +128,15 @@ textarea {
     font-size: 18px;
     text-align: center;
     resize: none;
+}
+
+.notify {
+    width: 100%;
+    max-width: 650px;
+    padding: 20px;
+    margin: -20px auto;
+    text-align: center;
+    box-shadow: 20px 20px 30px #ffffff;
+    border-radius: 20px;
+    background-color: #040721;
 }
