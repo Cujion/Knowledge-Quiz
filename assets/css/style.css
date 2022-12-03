@@ -111,6 +111,11 @@ p {
     gap: 10px;
 }
 
+#leadertitle {
+    font-size: 32px;
+    color: #ffffff;
+}
+
 .hidden {
     display: none;
 }
