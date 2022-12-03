@@ -130,7 +130,7 @@ textarea {
     resize: none;
 }
 
-#correct, #incorrect {
+#notify {
     width: 100%;
     max-width: 650px;
     padding: 20px;

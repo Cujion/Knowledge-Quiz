@@ -11,8 +11,9 @@ var button1 = document.getElementById("button1");
 var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 var button4 = document.getElementById("button4");
-var correct = document.getElementById("correct");
-var incorrect = document.getElementById("incorrect");
+var answerNotify = document.getElementById("notify");
+var textCorrect = document.createTextNode("CORRECT!");
+var textIncorrect = document.createTextNode("INCORRECT!");
 var triviaSubmit = document.getElementById("trivia-submit");
 var submitbutton = document.getElementById("initials-submit");
 var retakeTrivia = document.getElementById("retake-trivia");
@@ -104,11 +105,12 @@ function displayQuestion() {
 function choiceSelect() {
 
     if (choices.target === questions[qIndex].answer) {
-        correct.classList.remove("hidden");
+        answerNotify.classList.remove("hidden");
+        answerNotify.appendChild(textCorrect);
     }  else {
-        incorrect.classList.remove("hidden");
+        answerNotify.classList.remove("hidden");
+        answerNotify.appendChild(textIncorrect);
     } 
-
 }
 
 choices.addEventListener("click", function() {
