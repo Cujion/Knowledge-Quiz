@@ -1,32 +1,33 @@
+/* DEFAULT STYLING */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
-
+/* ENTIRE BODY STYLING */
 body {
     background-color: #9f9f9f;
     width: 100vw;
 }
-
+/* H1 STYLING */
 h1 {
     font-size: 36px;
 }
-
+/* H2 STYLING */
 h2 {
     font-size: 32px;
     color: white;
     margin-bottom: 20px;
     text-decoration: underline;
 }
-
+/* H3 STYLING */
 h3 {
     font-size: 28px;
     color: white;
     margin-bottom: 20px;
 }
-
+/* MAIN HEADER STYLING */
 header {
     display: flex;
     justify-content:space-around;
@@ -36,7 +37,7 @@ header {
     border-radius: 25px;
     color: #040721;
 }
-
+/* STYLING FOR HIGHSCORE BUTTON */
 #highscore{
     order: -1;
     color: #040721;
@@ -50,29 +51,29 @@ header {
     text-decoration: none;
     padding: 5px 15px;
 }
-
+/* HIGHSCORE HOVER EFFECT */
 #highscore:hover {
     background-color: #9f9f9f;
     box-shadow: 3px 3px 10px #040721;
     transition: 300ms ease;
 }
-
+/* TIMER STYLING */
 .time{
     font-size: 32px;
 }
-
+/* PARAGRAPH STYLING */
 p {
     color: #ffffff;
     margin-bottom: 10px;
     font-size: 28px;
 }
-
+/* STYLING FOR RETAKE TRIVIA */
 #retake {
     margin: 10px;
     padding: 10px;
     cursor: pointer;
 }
-
+/* STYLING FOR MAIN CONTAINER */
 #trivia-section {
     width: 100%;
     max-width: 700px;
@@ -83,18 +84,18 @@ p {
     border-radius: 20px;
     background-color: #040721;
 }
-
+/* QUESTIONS TITLE STYLING */
 .question-title {
     text-decoration: underline;
     text-decoration-color: #ffffff;
 }
-
+/* BUTTON STYLING ON HOVER */
 .button:hover {
     background-color: #9f9f9f;
     box-shadow: 3px 3px 10px #ffffff;
     transition: 300ms ease;
 }
-
+/* BUTTON STYLING */
 .button {
     background-color: #ffffff;
     color: #040721; 
@@ -106,23 +107,23 @@ p {
     cursor: pointer;
     text-decoration: none;
 }
-
+/* BUTTON GRID LAYOUT */
 .button-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
 }
-
+/* LEADERBOARD STYLING */
 #leadertitle {
     font-size: 32px;
     color: #ffffff;
     text-decoration: underline;
 }
-
+/* USED TO HIDE SECTIONS UNTIL NEED THROUGH JS */
 .hidden {
     display: none;
 }
-
+/* STYLING FOR INITIALS INPUT */
 textarea {
     padding: 5px;
     margin: 10px 0 10px 0;
@@ -130,7 +131,7 @@ textarea {
     text-align: center;
     resize: none;
 }
-
+/* STYLING FOR CORRECT/INCORRECT */
 #notify {
     width: 100%;
     max-width: 650px;
