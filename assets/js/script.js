@@ -216,5 +216,6 @@ function endTrivia() {
     questionContainer.classList.add("hidden");
     choices.classList.add("hidden");
     answerNotify.classList.add("hidden");
-
+    timerStart = 120;
+    qIndex = 0;
 }
