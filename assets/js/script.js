@@ -21,7 +21,7 @@ var usersScores = document.getElementById("usersscores");
 var initials = document.getElementById("initials");
 var home = document.getElementById("return");
 var timeCount;
-var timerStart = 120;
+var timerStart = 90;
 var usersScores = [];
 // var usersinitials = [];
 // QUESTIONS VARIABLE TABLE WITH EACH QUESTION, CHOICES AND ANSWER 
@@ -116,8 +116,8 @@ function clockTimer() {
     timerStart--;
     timer.textContent = `Timer: ${timerStart}`;
     if (timerStart <= 0) {
-        clearInterval(timeCount);
         endTrivia();
+        clearInterval(timeCount);
     }
 }
 // LOGIC FOR CHOICE SELECTION
@@ -126,13 +126,15 @@ function choiceSelect(event) {
     if (element.value !== questions[qIndex].answer) {
         // TIME DEDUCTION IF WRONG
         timerStart -= 15
-        if (timerStart < 0) {
-            timerStart = 0
+        if (timeCount <= 0 || qIndex === questions.length) {
+            clearInterval(timeCount);
+            endTrivia();
         } 
         // REMOVE HIDDEN CLASS AND ADD TEXT TO SHOW INCORRECT
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "INCORRECT!";
     }  else {
+        usersScores = timerStart + questions[qIndex].answer;
         // REMOVE HIDDEN CLASS AND ADD TEXT TO SHOW CORRECT       
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "CORRECT!";
@@ -141,16 +143,13 @@ function choiceSelect(event) {
 // LOGIC FOR CORRECT/INCORRECT CHOICE SELECTION
 choices.onclick = choiceSelect;
 
-
-// function finalScore() {
-// usersScores = 
-// }
 // EVENT LISTENER TO KNOW WHEN A CHOICE HAS BEEN CLICKED ON
 choices.addEventListener("click", function() {
     if (qIndex++ < 9) {
         displayQuestion();
     } else {
         // RESETTING QUESTIONS INDEX FOR RETAKE
+        endTrivia(),
         qIndex = 0,
         answerNotify.classList.add("hidden");
         questionContainer.classList.add("hidden");
@@ -195,10 +194,13 @@ retakeTrivia.addEventListener('click', function(event) {
 checkscore.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#highscore")) {
+        endTrivia(),
+        clearInterval(timeCount);
         triviaStart.classList.add("hidden");
         questionContainer.classList.add("hidden");
         choices.classList.add("hidden");
         triviaSubmit.classList.add("hidden");
+        retakeTrivia.classList.add("hidden");
         userInput.classList.remove("hidden");
     }
 });
@@ -216,6 +218,7 @@ function endTrivia() {
     questionContainer.classList.add("hidden");
     choices.classList.add("hidden");
     answerNotify.classList.add("hidden");
-    timerStart = 120;
+    timerStart = 90;
     qIndex = 0;
+    clearInterval(timeCount);
 }

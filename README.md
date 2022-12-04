@@ -1,4 +1,4 @@
-# Knowledge Quiz#
+# Knowledge Quiz
 
 [Link to my project](https://cujion.github.io/Knowledge-Quiz/)
 
