@@ -138,9 +138,7 @@ function choiceSelect(event) {
 
 // function finalScore() {
 // usersScores = 
- 
-
-}
+// }
 
 choices.onclick = choiceSelect;
 choices.addEventListener("click", function() {
