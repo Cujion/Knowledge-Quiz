@@ -33,8 +33,8 @@ var questions = [
     },
     {
         question: "Who did the Yankees defeat to win their first world series?",
-        choices: ["Boston", "Giants", "Tigers", "Senators"],
-        answer: "Giants",
+        choices: ["Boston Red Soxs", "San Francisco Giants", "Detroit Tigers", "Senators"],
+        answer: "San Francisco Giants",
     },
     {
         question: "How many world series championships do The Yankees have currently?",
@@ -43,23 +43,23 @@ var questions = [
     },
     {
         question: "Who is The Yankees single season homerun leader?",
-        choices: ["Ruth", "Judge", "Maris", "Gehrig"],
-        answer: "Judge",
+        choices: ["Babe Ruth", "Aaron Judge", "Roger Maris", "Lou Gehrig"],
+        answer: "Aaron Judge",
     },
     {
         question: "Who holds The Yankees single season saves record?",
-        choices: ["Chapman", "Lyle", "Rivera", "Gossage"],
-        answer: "Rivera",
+        choices: ["Aroldis Chapman", "Sparky Lyle", "Mariano Rivera", "Goose Gossage"],
+        answer: "Mariano Rivera",
     },
     {
         question: "Who holds The Yankees single season strikeout record?",
-        choices: ["Cole", "Guidry", "Cone", "Sabathia"],
-        answer: "Cole",
+        choices: ["Gerrit Cole", "Ron Guidry", "David Cone", "CC Sabathia"],
+        answer: "Gerrit Cole",
     },
     {
         question: "Who holds The Yankees team homerun record?",
-        choices: ["Judge", "Maris", "Ruth", "Mantle"],
-        answer: "Ruth",
+        choices: ["Aaron Judge", "Roger Maris", "Babe Ruth", "Mickey Mantle"],
+        answer: "Babe Ruth",
     },
     {
         question: "What division do The Yankees play?",
@@ -73,7 +73,7 @@ var questions = [
     },
     {
         question: "When did The Yankees win their first World Series?",
-        choices: ["1914", "1920", "1932", "1923"],
+        choices: ["1914", "1923", "1932", "1920"],
         answer: "1923",
     }
     
@@ -117,7 +117,7 @@ function clockTimer() {
     timer.textContent = `Timer: ${timerStart}`;
     if (timerStart <= 0) {
         clearInterval(timeCount);
-        // endTrivia();
+        endTrivia();
     }
 }
 // LOGIC FOR CHOICE SELECTION
@@ -210,3 +210,11 @@ home.addEventListener('click', function(event) {
         triviaStart.classList.remove("hidden");
     }
 });
+
+function endTrivia() {
+    triviaSubmit.classList.remove("hidden");
+    questionContainer.classList.add("hidden");
+    choices.classList.add("hidden");
+    answerNotify.classList.add("hidden");
+
+}
