@@ -63,7 +63,8 @@ header {
 
 p {
     color: #ffffff;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 28px;
 }
 
 #retake {

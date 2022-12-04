@@ -26,15 +26,11 @@
             <h3 id="trivia-questions">Question</h3>
         </section>
         <section id="choices" class="button-grid hidden">
-            <button id="button1" class="button"></button>
-            <button id="button2" class="button"></button>
-            <button id="button3" class="button"></button>
-            <button id="button4" class="button"></button>
         </section>
         <article id="trivia-submit" class="hidden">
             <h3>This is the end of the Trivia!</h3>
             <p>Enter and submit your initials below.</p>
-            <textarea rows="1" cols="5" placeholder="Initials"></textarea>
+            <textarea id="initials"rows="1" cols="5" placeholder="Initials"></textarea>
             <br>
             <section id="initials-submit">
                 <button id="submit" class="button">Submit Initials</button>
@@ -45,9 +41,9 @@
             <button class="button" id="retake">Retake Trivia</button>
         </section>
         <section id="userinput" class="hidden">
-            <p id="leadertitle">Leaderboards</p>
-            <div id="usersinitials"></div>
-            <div id="usersscores"></div>
+            <p id="leadertitle">Leaderboard</p>
+            <p>User: <span  id="usersinitials"></span></p>
+            <p>Score: <span  id="users-score"></span></p>
             <button class="button" id="return">Home</button>
         </section>
     </main>

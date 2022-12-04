@@ -12,16 +12,19 @@ var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 var button4 = document.getElementById("button4");
 var answerNotify = document.getElementById("notify");
-var textCorrect = document.createTextNode("CORRECT!");
-var textIncorrect = document.createTextNode("INCORRECT!");
+// var textCorrect = document.createTextNode("CORRECT!");
+// var textIncorrect = document.createTextNode("INCORRECT!");
 var triviaSubmit = document.getElementById("trivia-submit");
 var submitbutton = document.getElementById("initials-submit");
 var retakeTrivia = document.getElementById("retake-trivia");
 var userInput = document.getElementById("userinput");
+var usersScores = document.getElementById("usersscores");
+var initials = document.getElementById("initials");
 var home = document.getElementById("return");
+var timeCount;
 var timerStart = 120;
-var usersscores = [];
-var usersinitials = [];
+var usersScores = [];
+// var usersinitials = [];
 var questions = [
     {
         question: "What was the original team name before becoming The Yankees in 1913?",
@@ -75,6 +78,27 @@ var questions = [
     }
     
 ]
+
+var qIndex = 0;
+
+function displayQuestion() {
+    var currQuest = questions[qIndex];
+    var triviaQuestions = document.getElementById("trivia-questions");
+
+    triviaQuestions.textContent = currQuest.question;
+
+    choices.innerHTML = "";
+
+    for (let i = 0; i < currQuest.choices.length; i++) {
+        var choice = currQuest.choices[i];
+        var choiceButton = document.createElement("button");
+        choiceButton.setAttribute("class", "button");
+        choiceButton.setAttribute("value", choice);
+        choiceButton.textContent = `${i+1}. ${choice}`;
+        choices.appendChild(choiceButton);
+    }
+}
+
 startButton.addEventListener('click', function(event) {
     // SHOW TRIVIA QUESTIONS
     var element = event.target; 
@@ -84,78 +108,84 @@ startButton.addEventListener('click', function(event) {
         choices.classList.remove("hidden");
     }
     displayQuestion();
+    timeCount = setInterval(clockTimer, 1000);
 });
 
-var qIndex = 0;
-
-function displayQuestion() {
-    if (qIndex === choices.length) {
-        triviaSubmit.classList.remove("hidden");
-        questionContainer.classList.add("hidden");
-
-    } else {
-        triviaQuestions.innerText = questions[qIndex].question;
-        button1.innerHTML = questions[qIndex].choices[0];
-        button2.innerHTML = questions[qIndex].choices[1];
-        button3.innerHTML = questions[qIndex].choices[2];
-        button4.innerHTML = questions[qIndex].choices[3];
+function clockTimer() {
+    timerStart--;
+    timer.textContent = `Timer: ${timerStart}`;
+    if (timerStart <= 0) {
+        clearInterval(timeCount);
+        // endTrivia();
     }
 }
 
-function choiceSelect() {
-
-    if (choices.target === questions[qIndex].answer) {
+function choiceSelect(event) {
+    var element = event.target;
+    console.log(element)
+    if (element.value !== questions[qIndex].answer) {
+        timerStart -= 15
+        if (timerStart < 0) {
+            timerStart = 0
+        } 
         answerNotify.classList.remove("hidden");
-        answerNotify.appendChild(textCorrect);
+        answerNotify.textContent = "INCORRECT!";
     }  else {
         answerNotify.classList.remove("hidden");
-        answerNotify.appendChild(textIncorrect);
+        answerNotify.textContent = "CORRECT!";
     } 
 }
 
+// function finalScore() {
+// usersScores = 
+ 
+
+}
+
+choices.onclick = choiceSelect;
 choices.addEventListener("click", function() {
-    choiceSelect();
-    qIndex++;
-    displayQuestion();
-
-});
-
-// console.log(questions)
-// function showQuestion() {
-//     // console.log(questions[9].answer)
-//     for (var i = 0; i < questions[0].choices.length; i++) {
-//         var button = document.createElement("button")
-//         button.innerHTML = questions[i].choices
-//         console.log(button)
-        
-//     }
-// }
-
-// showQuestion();
-// document.addEventListener("click", function(event) {
-//     var element = event.target;
-//     if (element.matches("#choices button")) {
-
-//         // MOVE CURSOR
-//         // CHECK FOR CORRECT ANSWER
-//         // IF WRONG, SUBTRACT TIME
-//         // IF NO MORE QUESTIONS, SHOW END SCREEN
-//     }
-// });
-
-submitbutton.addEventListener('click', function(event) {
-    var element = event.target;
-    if (element.matches("#submit")) {
+    if (qIndex++ < 9) {
+        displayQuestion();
+        console.log(qIndex)
+    } else {
+        clockTimer()
+        qIndex = 0,
+        console.log(qIndex)
+        answerNotify.classList.add("hidden");
         questionContainer.classList.add("hidden");
+        choices.classList.add("hidden");
         triviaSubmit.classList.remove("hidden");
     }
+
 });
+
+submitbutton.addEventListener('click', function(event) {
+    event.preventDefault();
+    var playersResults = {
+        initials: initials.value,
+        score: usersScores.value,
+    }
+    
+    localStorage.setItem("playersResults", JSON.stringify(playersResults));
+    renderMessage()
+    var element = event.target;
+    if (element.matches("#submit")) {
+        triviaSubmit.classList.add("hidden");
+        retakeTrivia.classList.remove("hidden");
+    }
+});
+
+function renderMessage() {
+    var highscores = JSON.parse(localStorage.getItem("playersResults"));
+    document.getElementById("usersinitials").innerHTML = highscores.initials;
+    document.getElementById("users-score").innerHTML = highscores.score;
+  }
 
 retakeTrivia.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#retake")) {
-        triviaSubmit.classList.add("hidden");
-        submitbutton.classList.remove("hidden");
+        triviaStart.classList.remove("hidden");
+        retakeTrivia.classList.add("hidden");
     }
 });
 
