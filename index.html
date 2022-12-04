@@ -6,27 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yankees Speed Trivia</title>
+    <!-- CSS STYLING HREF -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <!-- HEADER WITH TITLE, LEADERBOARD BUTTON AND TIMER -->
     <header>
         <h1>Test your knowledge on the New York Yankees!</h1>
         <button id="highscore" class="score">Highscores</button>
         <div id="time-left" class="time">Timer: 0</div>
     </header>
+    <!-- MAIN CONTAINER FOR STYLING -->
     <main id="trivia-section">
+        <!--START SCREEN WITH START BUTTON -->
         <div id="start-trivia">
             <h2>Yankees Trivia</h2>
             <button class="button" id="start">Start Trivia</button>
         </div>
+        <!-- MAIN QUESTION CONTAINER WITH TITLE AND QUESTION DISPLAY SECTION -->
         <section id="question-container" class="hidden">
             <h3 class="question-title">YANKEES HISTORY CHALLENGE!</h3>
-            <h3 id="trivia-questions">Question</h3>
+            <h3 id="trivia-questions"></h3>
+            <!-- ANSWER CHOICES WITH BUTTON GRID -->
         </section>
         <section id="choices" class="button-grid hidden">
         </section>
+        <!-- SUBMIT BUTTON WITH INITIALS SECTION -->
         <article id="trivia-submit" class="hidden">
             <h3>This is the end of the Trivia!</h3>
             <p>Enter and submit your initials below.</p>
@@ -36,10 +43,12 @@
                 <button id="submit" class="button">Submit Initials</button>
             </section>
         </article>
+        <!-- RETAKE TRIVIA WITH BUTTON -->
         <section id="retake-trivia" class="hidden">
             <p>Would you like to try again?</p>
             <button class="button" id="retake">Retake Trivia</button>
         </section>
+        <!-- HIGHSCORE/LEADERBOARD BUTTON FOR LOCAL STORAGE SAVING -->
         <section id="userinput" class="hidden">
             <p id="leadertitle">Leaderboard</p>
             <p>User: <span  id="usersinitials"></span></p>
@@ -47,9 +56,11 @@
             <button class="button" id="return">Home</button>
         </section>
     </main>
+    <!-- DISPLAY FOR CORRECT/INCORRECT ANSWER -->
     <section>
         <p id="notify" class="hidden"></p>
     </section>
+    <!-- FOR JAVASCRIPT TO WORK WITH WEBPAGE -->
     <script src="./assets/js/script.js"></script>
 </body>
 

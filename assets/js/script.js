@@ -1,3 +1,4 @@
+// VARIABLES
 var checkscore = document.getElementById("highscore");
 var timer = document.getElementById("time-left");
 var triviaMain = document.getElementById("trivia-section");
@@ -12,8 +13,6 @@ var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 var button4 = document.getElementById("button4");
 var answerNotify = document.getElementById("notify");
-// var textCorrect = document.createTextNode("CORRECT!");
-// var textIncorrect = document.createTextNode("INCORRECT!");
 var triviaSubmit = document.getElementById("trivia-submit");
 var submitbutton = document.getElementById("initials-submit");
 var retakeTrivia = document.getElementById("retake-trivia");
@@ -25,6 +24,7 @@ var timeCount;
 var timerStart = 120;
 var usersScores = [];
 // var usersinitials = [];
+// QUESTIONS VARIABLE TABLE WITH EACH QUESTION, CHOICES AND ANSWER 
 var questions = [
     {
         question: "What was the original team name before becoming The Yankees in 1913?",
@@ -78,9 +78,9 @@ var questions = [
     }
     
 ]
-
+// SETTING THE STARTING QUESTION
 var qIndex = 0;
-
+// FUNCTION TO DISPLAY EACH QUESTION
 function displayQuestion() {
     var currQuest = questions[qIndex];
     var triviaQuestions = document.getElementById("trivia-questions");
@@ -88,7 +88,7 @@ function displayQuestion() {
     triviaQuestions.textContent = currQuest.question;
 
     choices.innerHTML = "";
-
+// FOR LOOP TO CYCLE THROUGH EACH QUESTION
     for (let i = 0; i < currQuest.choices.length; i++) {
         var choice = currQuest.choices[i];
         var choiceButton = document.createElement("button");
@@ -98,11 +98,12 @@ function displayQuestion() {
         choices.appendChild(choiceButton);
     }
 }
-
+// EVENT LISTENER FOR WHEN START BUTTON IS CLICKED
 startButton.addEventListener('click', function(event) {
     // SHOW TRIVIA QUESTIONS
     var element = event.target; 
     if (element) {
+        // ADDING/REMOVING "HIDDEN" TO SHOW CORRECT SECTIONS
         triviaStart.classList.add("hidden");
         questionContainer.classList.remove("hidden");
         choices.classList.remove("hidden");
@@ -110,7 +111,7 @@ startButton.addEventListener('click', function(event) {
     displayQuestion();
     timeCount = setInterval(clockTimer, 1000);
 });
-
+// CLOCK TIMER FUNCTION 
 function clockTimer() {
     timerStart--;
     timer.textContent = `Timer: ${timerStart}`;
@@ -119,36 +120,38 @@ function clockTimer() {
         // endTrivia();
     }
 }
-
+// LOGIC FOR CHOICE SELECTION
 function choiceSelect(event) {
     var element = event.target;
-    console.log(element)
     if (element.value !== questions[qIndex].answer) {
+        // TIME DEDUCTION IF WRONG
         timerStart -= 15
         if (timerStart < 0) {
             timerStart = 0
         } 
+        // REMOVE HIDDEN CLASS AND ADD TEXT TO SHOW INCORRECT
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "INCORRECT!";
     }  else {
+        // REMOVE HIDDEN CLASS AND ADD TEXT TO SHOW CORRECT       
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "CORRECT!";
     } 
 }
+// LOGIC FOR CORRECT/INCORRECT CHOICE SELECTION
+choices.onclick = choiceSelect;
+
 
 // function finalScore() {
 // usersScores = 
 // }
-
-choices.onclick = choiceSelect;
+// EVENT LISTENER TO KNOW WHEN A CHOICE HAS BEEN CLICKED ON
 choices.addEventListener("click", function() {
     if (qIndex++ < 9) {
         displayQuestion();
-        console.log(qIndex)
     } else {
-        clockTimer()
+        // RESETTING QUESTIONS INDEX FOR RETAKE
         qIndex = 0,
-        console.log(qIndex)
         answerNotify.classList.add("hidden");
         questionContainer.classList.add("hidden");
         choices.classList.add("hidden");
@@ -156,14 +159,15 @@ choices.addEventListener("click", function() {
     }
 
 });
-
+// EVENT LISTENER FOR WHEN SUBMIT BUTTON IS CLICKED
 submitbutton.addEventListener('click', function(event) {
     event.preventDefault();
+    // CREATING VARIABLES FOR PLAYERS INITIALS AND SCORES
     var playersResults = {
         initials: initials.value,
         score: usersScores.value,
     }
-    
+    // SENDING PLAYERS RESULTS TO LOCAL STORAGE
     localStorage.setItem("playersResults", JSON.stringify(playersResults));
     renderMessage()
     var element = event.target;
@@ -172,13 +176,14 @@ submitbutton.addEventListener('click', function(event) {
         retakeTrivia.classList.remove("hidden");
     }
 });
-
+// RENDERING PLAYER RESULTS LEADERBOARD/HIGHSCORES PAGE
 function renderMessage() {
     var highscores = JSON.parse(localStorage.getItem("playersResults"));
+    // GRABBING THE INFORMATION FROM LOCAL STORAGE AND CONVERTING IT INTO BACK INTO A STRING
     document.getElementById("usersinitials").innerHTML = highscores.initials;
     document.getElementById("users-score").innerHTML = highscores.score;
   }
-
+// EVENT LISTENER FOR WHEN RETAKE TRIVIA IS CLICKED TO BRING BACK START PAGE
 retakeTrivia.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#retake")) {
@@ -186,7 +191,7 @@ retakeTrivia.addEventListener('click', function(event) {
         retakeTrivia.classList.add("hidden");
     }
 });
-
+// EVENT LISTENER FOR WHEN HIGHSCORES IS CLICKED TO DISPLAY LEADERBOARD
 checkscore.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#highscore")) {
@@ -197,7 +202,7 @@ checkscore.addEventListener('click', function(event) {
         userInput.classList.remove("hidden");
     }
 });
-
+// EVENT LISTENER FOR WHEN HOME BUTTON IS CLICKED TO DISPLAY START PAGE
 home.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#return")) {
