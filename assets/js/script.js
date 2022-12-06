@@ -19,12 +19,10 @@ var retakeTrivia = document.getElementById("retake-trivia");
 var userInput = document.getElementById("userinput");
 var usersScores = document.getElementById("users-scores");
 var home = document.getElementById("return");
-var userInitial = document.getElementById("usersinitials");
 var playerInitials = document.getElementById("initials");
 var timeCount;
 var timerStart = 90;
 var finalUserScore = 0;
-var finalInitials;
 
 // QUESTIONS VARIABLE TABLE WITH EACH QUESTION, CHOICES AND ANSWER 
 var questions = [
@@ -120,11 +118,16 @@ function clockTimer() {
     timerStart--;
     timer.textContent = `Timer: ${timerStart}`;
     if (timerStart <= 0) {
-        // finalUserScore = usersScores+timerStart;
         endTrivia();
         clearInterval(timeCount);
     }
 }
+
+function resetTimer() {
+    secondsLeft = 0;
+    timer.textContent = `Timer: ${timerStart}`;
+}
+
 // LOGIC FOR CHOICE SELECTION
 function choiceSelect(event) {
     var element = event.target;
@@ -232,5 +235,6 @@ function endTrivia() {
     answerNotify.classList.add("hidden");
     timerStart = 90;
     qIndex = 0;
+    resetTimer();
     clearInterval(timeCount);
 }
