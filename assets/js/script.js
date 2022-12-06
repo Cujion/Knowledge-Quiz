@@ -84,9 +84,7 @@ var qIndex = 0;
 function displayQuestion() {
     var currQuest = questions[qIndex];
     var triviaQuestions = document.getElementById("trivia-questions");
-
     triviaQuestions.textContent = currQuest.question;
-
     choices.innerHTML = "";
 // FOR LOOP TO CYCLE THROUGH EACH QUESTION
     for (let i = 0; i < currQuest.choices.length; i++) {
@@ -113,6 +111,7 @@ startButton.addEventListener('click', function(event) {
     displayQuestion();
     timeCount = setInterval(clockTimer, 1000);
 });
+
 // CLOCK TIMER FUNCTION 
 function clockTimer() {
     timerStart--;
@@ -148,6 +147,7 @@ function choiceSelect(event) {
         answerNotify.textContent = "CORRECT!";
     } 
 }
+
 // LOGIC FOR CORRECT/INCORRECT CHOICE SELECTION
 choices.onclick = choiceSelect;
 
@@ -166,6 +166,7 @@ choices.addEventListener("click", function() {
     }
 
 });
+
 // EVENT LISTENER FOR WHEN SUBMIT BUTTON IS CLICKED
 submitbutton.addEventListener('click', function(event) {
     event.preventDefault();
@@ -219,6 +220,7 @@ checkscore.addEventListener('click', function(event) {
         userInput.classList.remove("hidden");
     }
 });
+
 // EVENT LISTENER FOR WHEN HOME BUTTON IS CLICKED TO DISPLAY START PAGE
 home.addEventListener('click', function(event) {
     var element = event.target;
