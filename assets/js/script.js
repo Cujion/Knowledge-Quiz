@@ -140,7 +140,6 @@ function choiceSelect(event) {
         answerNotify.textContent = "INCORRECT!";
     }  else {
         finalUserScore++;
-        console.log(finalUserScore);
         // REMOVE HIDDEN CLASS AND ADD TEXT TO SHOW CORRECT       
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "CORRECT!";
@@ -175,12 +174,12 @@ submitbutton.addEventListener('click', function(event) {
         }
         var playerInitials = document.getElementById('initials').value.toUpperCase();
         var playerScore = finalUserScore; 
-        var player = {
+        var playerResults = {
             'name': playerInitials,
             'score': playerScore
         };
         // PUSH PLAYER OBJECTS TO LOCAL STORAGE
-        leaderboard.push(player); 
+        leaderboard.push(playerResults); 
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
         document.getElementById("usersinitials").innerHTML += playerInitials + " / ";
         document.getElementById("users-score").innerHTML += finalUserScore + " / ";
