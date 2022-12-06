@@ -12,6 +12,14 @@
 * This project gives you a very good understanding of how functions work along with how to use javascript to add functionality to your webpage. Web APIs also come into play in this project by learning how to use event listeners for when buttons are clicked to perform a specific action or change the display on the screen to the next section. Local storage is also used to store data in terms of initials and your final score and then re-render that information back onto a leaderboard page to display your initials with the score you received.
 
 ## Visuals
+![Start Screen](./assets/images/start.png)
+![Questions with timer running](./assets/images/questions.png)
+![Correct displayed on correct pick](./assets/images/questions-correct.png)
+![Incorrect displayed on wrong pick](./assets/images/questions-incorrect.png)
+![Submit screen](./assets/images/submit.png)
+![Retake screen](./assets/images/retake.png)
+![Leaderboard screen](./assets/images/highscores.png)
+
 
 ## License
 * MIT License

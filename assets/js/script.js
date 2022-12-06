@@ -17,13 +17,15 @@ var triviaSubmit = document.getElementById("trivia-submit");
 var submitbutton = document.getElementById("initials-submit");
 var retakeTrivia = document.getElementById("retake-trivia");
 var userInput = document.getElementById("userinput");
-var usersScores = document.getElementById("usersscores");
-var initials = document.getElementById("initials");
+var usersScores = document.getElementById("users-scores");
 var home = document.getElementById("return");
+var userInitial = document.getElementById("usersinitials");
+var playerInitials = document.getElementById("initials");
 var timeCount;
 var timerStart = 90;
-var usersScores = [];
-// var usersinitials = [];
+var finalUserScore = 0;
+var finalInitials;
+
 // QUESTIONS VARIABLE TABLE WITH EACH QUESTION, CHOICES AND ANSWER 
 var questions = [
     {
@@ -98,9 +100,11 @@ function displayQuestion() {
         choices.appendChild(choiceButton);
     }
 }
+
 // EVENT LISTENER FOR WHEN START BUTTON IS CLICKED
 startButton.addEventListener('click', function(event) {
     // SHOW TRIVIA QUESTIONS
+    finalUserScore = 0;
     var element = event.target; 
     if (element) {
         // ADDING/REMOVING "HIDDEN" TO SHOW CORRECT SECTIONS
@@ -116,6 +120,7 @@ function clockTimer() {
     timerStart--;
     timer.textContent = `Timer: ${timerStart}`;
     if (timerStart <= 0) {
+        // finalUserScore = usersScores+timerStart;
         endTrivia();
         clearInterval(timeCount);
     }
@@ -125,7 +130,7 @@ function choiceSelect(event) {
     var element = event.target;
     if (element.value !== questions[qIndex].answer) {
         // TIME DEDUCTION IF WRONG
-        timerStart -= 15
+        timerStart -= 15 
         if (timeCount <= 0 || qIndex === questions.length) {
             clearInterval(timeCount);
             endTrivia();
@@ -134,7 +139,8 @@ function choiceSelect(event) {
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "INCORRECT!";
     }  else {
-        usersScores = timerStart + questions[qIndex].answer;
+        finalUserScore++;
+        console.log(finalUserScore);
         // REMOVE HIDDEN CLASS AND ADD TEXT TO SHOW CORRECT       
         answerNotify.classList.remove("hidden");
         answerNotify.textContent = "CORRECT!";
@@ -162,34 +168,37 @@ choices.addEventListener("click", function() {
 submitbutton.addEventListener('click', function(event) {
     event.preventDefault();
     // CREATING VARIABLES FOR PLAYERS INITIALS AND SCORES
-    var playersResults = {
-        initials: initials.value,
-        score: usersScores.value,
-    }
+    var playersResults = JSON.parse(localStorage.getItem("playerResults")) || {
+        initials: [],
+        scores: []
+    };
+    playersResults.initials.push(finalInitials);
+    playersResults.scores.push(finalUserScore);
+    renderMessage();
+    
     // SENDING PLAYERS RESULTS TO LOCAL STORAGE
-    localStorage.setItem("playersResults", JSON.stringify(playersResults));
-    renderMessage()
+    localStorage.setItem("playerResults", JSON.stringify(playersResults));
     var element = event.target;
     if (element.matches("#submit")) {
         triviaSubmit.classList.add("hidden");
         retakeTrivia.classList.remove("hidden");
     }
 });
-// RENDERING PLAYER RESULTS LEADERBOARD/HIGHSCORES PAGE
+
 function renderMessage() {
-    var highscores = JSON.parse(localStorage.getItem("playersResults"));
-    // GRABBING THE INFORMATION FROM LOCAL STORAGE AND CONVERTING IT INTO BACK INTO A STRING
-    document.getElementById("usersinitials").innerHTML = highscores.initials;
-    document.getElementById("users-score").innerHTML = highscores.score;
-  }
+        document.getElementById("usersinitials").innerHTML += finalInitials
+        document.getElementById("users-score").innerHTML += finalUserScore
+}
 // EVENT LISTENER FOR WHEN RETAKE TRIVIA IS CLICKED TO BRING BACK START PAGE
 retakeTrivia.addEventListener('click', function(event) {
     var element = event.target;
     if (element.matches("#retake")) {
         triviaStart.classList.remove("hidden");
         retakeTrivia.classList.add("hidden");
+        finalUserScore = 0;
     }
 });
+
 // EVENT LISTENER FOR WHEN HIGHSCORES IS CLICKED TO DISPLAY LEADERBOARD
 checkscore.addEventListener('click', function(event) {
     var element = event.target;
