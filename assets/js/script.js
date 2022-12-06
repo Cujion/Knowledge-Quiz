@@ -167,28 +167,32 @@ choices.addEventListener("click", function() {
 // EVENT LISTENER FOR WHEN SUBMIT BUTTON IS CLICKED
 submitbutton.addEventListener('click', function(event) {
     event.preventDefault();
-    // CREATING VARIABLES FOR PLAYERS INITIALS AND SCORES
-    var playersResults = JSON.parse(localStorage.getItem("playerResults")) || {
-        initials: [],
-        scores: []
-    };
-    playersResults.initials.push(finalInitials);
-    playersResults.scores.push(finalUserScore);
-    renderMessage();
-    
-    // SENDING PLAYERS RESULTS TO LOCAL STORAGE
-    localStorage.setItem("playerResults", JSON.stringify(playersResults));
+    function addHighScore() {
+        var leaderboard = JSON.parse(localStorage.getItem('leaderboard'));
+        // CHECK FOR EMPTY LEADERBOARD
+        if (leaderboard == null) {
+            leaderboard = [];
+        }
+        var playerInitials = document.getElementById('initials').value.toUpperCase();
+        var playerScore = finalUserScore; 
+        var player = {
+            'name': playerInitials,
+            'score': playerScore
+        };
+        // PUSH PLAYER OBJECTS TO LOCAL STORAGE
+        leaderboard.push(player); 
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+        document.getElementById("usersinitials").innerHTML += playerInitials + " / ";
+        document.getElementById("users-score").innerHTML += finalUserScore + " / ";
+    }
     var element = event.target;
     if (element.matches("#submit")) {
         triviaSubmit.classList.add("hidden");
         retakeTrivia.classList.remove("hidden");
     }
+    addHighScore()
 });
 
-function renderMessage() {
-        document.getElementById("usersinitials").innerHTML += finalInitials
-        document.getElementById("users-score").innerHTML += finalUserScore
-}
 // EVENT LISTENER FOR WHEN RETAKE TRIVIA IS CLICKED TO BRING BACK START PAGE
 retakeTrivia.addEventListener('click', function(event) {
     var element = event.target;

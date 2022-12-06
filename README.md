@@ -18,7 +18,7 @@
 ![Incorrect displayed on wrong pick](./assets/images/questions-incorrect.png)
 ![Submit screen](./assets/images/submit.png)
 ![Retake screen](./assets/images/retake.png)
-![Leaderboard screen](./assets/images/highscores.png)
+![Leaderboard screen](./assets/images/leaderboard.png)
 
 
 ## License
